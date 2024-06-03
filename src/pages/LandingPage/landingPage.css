@@ -8,7 +8,5 @@
 }
 
 .landing-logo {
-    height: 300px;
-    filter: invert(1);
-    border-radius: 50%;
+    height: 500px;
 }

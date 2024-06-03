@@ -11,7 +11,7 @@ const LandingPage = () => {
     <div className="page">
       <div>
         <img
-          src="/mag-logo.jpg"
+          src="/extracted-logo.png"
           className="landing-logo"
           alt="magnifying glass logo"
         />

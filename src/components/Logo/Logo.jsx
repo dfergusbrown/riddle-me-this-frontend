@@ -5,7 +5,7 @@ import './logo.css';
 const Logo = () => {
   return (
     <NavLink to="/">
-      <img src="/mag-logo.jpg" alt="Logo" className="logo" />
+      <img src="/extracted-logo.png" alt="Logo" className="logo" />
     </NavLink>
   );
 };
