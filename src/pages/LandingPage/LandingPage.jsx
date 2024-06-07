@@ -3,6 +3,7 @@ import "./landingPage.css";
 import { Button, Flex } from "@radix-ui/themes";
 import { NavLink } from "react-router-dom";
 import LoginDialog from "../../components/LoginDialog/LoginDialog";
+import Logo from "../../components/Logo/Logo";
 
 const LandingPage = () => {
   const loginDialogRef = useRef(null);
@@ -10,9 +11,9 @@ const LandingPage = () => {
   return (
     <div className="page">
       <div>
-        <img
+        <Logo
           src="/extracted-logo.png"
-          className="landing-logo"
+          newClassName="landing-logo"
           alt="magnifying glass logo"
         />
       </div>

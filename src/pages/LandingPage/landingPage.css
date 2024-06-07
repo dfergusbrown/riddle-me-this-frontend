@@ -9,5 +9,5 @@
 
 .landing-logo {
     height: 22em;
-    /* filter: invert(); */
+    filter: invert() invert(82%) sepia(27%) saturate(800%) hue-rotate(350deg) brightness(115%) contrast(88%);
 }

@@ -53,10 +53,7 @@ const BrowseHunts = () => {
         as="h1"
         size="6"
         weight="bold"
-        color="indigo"
         variant="soft"
-        flexShrink="0"
-        highContrast
       >
         Browse Hunts
       </Text>
@@ -65,7 +62,6 @@ const BrowseHunts = () => {
         className="search-container"
         width="100%"
         justify="center"
-        flexShrink="0"
       >
         <TextField.Root
           placeholder="Search for hunts..."
@@ -84,7 +80,6 @@ const BrowseHunts = () => {
         </TextField.Root>
         <Button
           onClick={handleSearch}
-          color="indigo"
           variant="soft"
           size="medium"
         >
