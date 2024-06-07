@@ -21,19 +21,13 @@ const HuntInstanceEntry = ({ results, setResults, byHuntId, huntId }) => {
   return (
     <>
       {byHuntId ? (
-        <Table.Row>
-          <Table.ColumnHeaderCell colSpan={2}>
-            <Flex justify="end">
-              <Button
-                variant="surface"
-                onClick={() => navigate(`/launch-hunt/${huntId}`)}
-              >
-                New Instance
-              </Button>
-            </Flex>
-            <Flex justify="center">Hunt Instances</Flex>
-          </Table.ColumnHeaderCell>
-        </Table.Row>
+        <Flex width="100%" justify="end">
+          <Button
+            variant="surface"
+            m="15px"
+            onClick={() => navigate(`/launch-hunt/${huntId}`)}
+          >New Instance</Button>
+        </Flex>
       ) : null}
       {results.length > 0 ? (
         results.map((result, index) => {
@@ -57,13 +51,9 @@ const HuntInstanceEntry = ({ results, setResults, byHuntId, huntId }) => {
           );
         })
       ) : (
-        <Table.Row>
-          <Table.Cell colSpan="2" style={{ textAlign: "center" }}>
-            <Text size="4" color="gray">
-              No results found
-            </Text>
-          </Table.Cell>
-        </Table.Row>
+        <Flex width="100%">
+          <Text>No Results Found</Text>
+        </Flex>
       )}
     </>
   );

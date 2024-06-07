@@ -1,7 +1,16 @@
 import React from "react";
-import { Text, Table, Button, Flex } from "@radix-ui/themes";
+import {
+  Text,
+  Table,
+  Button,
+  Flex,
+  ScrollArea,
+  Heading,
+} from "@radix-ui/themes";
 import { useState } from "react";
 import HuntInstanceEntry from "../HuntInstanceEntry/HuntInstanceEntry";
+import { NavLink } from "react-router-dom";
+import "./huntTemplateEntry.css"
 
 const HuntTemplateEntry = (props) => {
   const { hunts } = props;
@@ -20,73 +29,57 @@ const HuntTemplateEntry = (props) => {
   };
 
   return (
-    <div
-      style={{
-        overflowY: "scroll",
-        display: "flex",
-        flexDirection: "column",
-        height: "65vh",
-        marginTop: "20px",
-      }}
-    >
-      <Flex width="100%" mt="20px">
-        <Table.Root>
-          <Table.Header>
-            <Table.Row>
-              <Table.ColumnHeaderCell className="table-header-hunts">
-                Hunt Template
-              </Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell className="table-header-date">
-                Location
-              </Table.ColumnHeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {hunts.length > 0 ? (
-              hunts.map((hunt, index) => (
-                <React.Fragment key={index}>
-                  <Table.Row>
-                    <Table.RowHeaderCell style={{ textAlign: "center" }}>
-                      <Button
-                        variant="soft"
-                        style={{
-                          textDecoration: "none",
-                          color: "inherit",
-                          width: "150px",
-                          height: "50px"
-                        }}
-                        onClick={() => toggleRow(index)}
-                      >
-                        {hunt.name}
-                      </Button>
-                    </Table.RowHeaderCell>
-                    <Table.Cell style={{ textAlign: "center" }}>
-                      {hunt.location}
-                    </Table.Cell>
-                  </Table.Row>
-                  {expandedRows.includes(index) && (
-                    <HuntInstanceEntry
-                      results={results}
-                      setResults={setResults}
-                      byHuntId={true}
-                      huntId={hunt.id}
-                    />
-                  )}
-                </React.Fragment>
-              ))
-            ) : (
-              <Table.Row>
-                <Table.Cell colSpan="2" style={{ textAlign: "center" }}>
-                  <Text size="4" color="gray">
-                    No scavenger hunts created.
-                  </Text>
-                </Table.Cell>
-              </Table.Row>
-            )}
-          </Table.Body>
-        </Table.Root>
+    <>
+      <Flex width="100%" justify="center">
+        <Heading as="h1">Hunt Template</Heading>
       </Flex>
-    </div>
+      <Flex width="100%" p="15px 0px 5px">
+        <Flex width="50%" justify="center"><Text>Name</Text></Flex>
+        <Flex width="50%" justify="center"><Text>Location</Text></Flex>
+      </Flex>
+      <Flex flexGrow={1} overflow="hidden" direction="column">
+        <ScrollArea
+          scrollbars="vertical"
+          style={{maxWidth: "100%", height: "100%"}}
+        >
+          {hunts.length > 0 ? (
+            hunts.map((hunt, index) => (
+              <React.Fragment key={index}>
+                <NavLink
+                  onClick={() => toggleRow(index)}
+                  style={{ textDecoration: "none", color: "inherit", width: "100%" }}
+                >
+                  <Flex width="100vw" p="5px 15px" className="template-row">
+                    <Flex width="50%" overflow="hidden" style={{ textAlign: "center", textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
+                      <Text width="100%">{hunt.name}</Text>
+                    </Flex>
+                    <Flex width="50%" overflow="hidden" style={{ textAlign: "center", textOverflow: "ellipsis", whiteSpace: "nowrap"}}>
+                      <Text style={{ textAlign: "center" }}>
+                        {hunt.location}
+                      </Text>
+                    </Flex>
+                  </Flex>
+                </NavLink>
+                {expandedRows.includes(index) && (
+                  <HuntInstanceEntry
+                    results={results}
+                    setResults={setResults}
+                    byHuntId={true}
+                    huntId={hunt.id}
+                  />
+                )}
+              </React.Fragment>
+            ))
+          ) : (
+            <Flex width="100%" align="center">
+              <Text size="4" color="gray">
+                No scavenger hunts created.
+              </Text>
+            </Flex>
+          )}
+        </ScrollArea>
+      </Flex>
+    </>
   );
 };
 
