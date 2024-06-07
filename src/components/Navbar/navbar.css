@@ -1,12 +1,12 @@
 .navbar {
-    position: sticky;
+    position: absolute;
     top: 0;
     width: 100%;
     display: flex;
-    background-color: black;
     height: 60px;
     justify-content: space-between;
     align-items: center;
+    background-color: rbga();
 }
 
 .menu-root {

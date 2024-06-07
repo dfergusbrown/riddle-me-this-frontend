@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import LoginDialog from "../../components/LoginDialog/LoginDialog";
 
 const LandingPage = () => {
-  const loginDialogRef = useRef(null)
+  const loginDialogRef = useRef(null);
 
   return (
     <div className="page">
@@ -20,7 +20,7 @@ const LandingPage = () => {
         <Button variant="surface" asChild>
           <NavLink to="/browse">Browse</NavLink>
         </Button>
-        <LoginDialog ref={loginDialogRef} buttonName="Login"/>
+        <LoginDialog ref={loginDialogRef} buttonName="Login" />
       </Flex>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Flex, Text, Box, Table, TextField } from "@radix-ui/themes";
+import { Button, Flex, Text, Box, Table, TextField, ScrollArea } from "@radix-ui/themes";
 import { getAllHuntInstances } from "../../services/serviceRoutes/huntInstanceServices";
 import "./browseHunts.css";
 import HuntInstanceEntry from "../../components/HuntInstanceEntry/HuntInstanceEntry";
@@ -44,8 +44,10 @@ const BrowseHunts = () => {
       direction="column"
       gap="20px"
       align="center"
-      m="4"
-      style={{ marginTop: "40px" }}
+      height="100%"
+      width="100%"
+      m="0"
+      p="80px 20px 40px"
     >
       <Text
         as="h1"
@@ -53,6 +55,7 @@ const BrowseHunts = () => {
         weight="bold"
         color="indigo"
         variant="soft"
+        flexShrink="0"
         highContrast
       >
         Browse Hunts
@@ -62,6 +65,7 @@ const BrowseHunts = () => {
         className="search-container"
         width="100%"
         justify="center"
+        flexShrink="0"
       >
         <TextField.Root
           placeholder="Search for hunts..."
@@ -73,6 +77,7 @@ const BrowseHunts = () => {
             flex: "1",
             border: "1px solid #ccc",
             borderRadius: "4px",
+            height: "2.5em"
           }}
         >
         <TextField.Slot />
@@ -86,7 +91,7 @@ const BrowseHunts = () => {
           Search
         </Button>
       </Flex>
-      <Box width="100%" mt="20px">
+      <ScrollArea type="always" scrollbars="vertical" style={{width: "100%", flexGrow: 1}}>
         <Table.Root>
           <Table.Header>
             <Table.Row>
@@ -106,7 +111,7 @@ const BrowseHunts = () => {
             />
           </Table.Body>
         </Table.Root>
-      </Box>
+      </ScrollArea>
     </Flex>
   );
 };

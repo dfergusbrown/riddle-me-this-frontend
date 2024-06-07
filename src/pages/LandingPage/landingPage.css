@@ -8,5 +8,6 @@
 }
 
 .landing-logo {
-    height: 500px;
+    height: 22em;
+    /* filter: invert(); */
 }
