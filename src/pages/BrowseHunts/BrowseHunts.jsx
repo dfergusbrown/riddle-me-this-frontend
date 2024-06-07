@@ -86,26 +86,22 @@ const BrowseHunts = () => {
           Search
         </Button>
       </Flex>
+        <Flex width="100%" className="row">
+          <Flex width="50%" justify="center">
+            <Text align="center">Hunts</Text>
+          </Flex>
+          <Flex width="50%" justify="center">
+            <Text align="center">Date</Text>
+          </Flex>
+        </Flex>
       <ScrollArea type="always" scrollbars="vertical" style={{width: "100%", flexGrow: 1}}>
-        <Table.Root>
-          <Table.Header>
-            <Table.Row>
-              <Table.ColumnHeaderCell className="table-header-hunts">
-                Hunts
-              </Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell className="table-header-date">
-                Date
-              </Table.ColumnHeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            <HuntInstanceEntry
-              results={results}
-              byHuntId={false}
-              setResults={setResults}
-            />
-          </Table.Body>
-        </Table.Root>
+        <Flex direction="column">
+          <HuntInstanceEntry
+                results={results}
+                byHuntId={false}
+                setResults={setResults}
+          />
+        </Flex>
       </ScrollArea>
     </Flex>
   );

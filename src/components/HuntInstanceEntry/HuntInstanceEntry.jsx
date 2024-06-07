@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button, Text, Flex } from "@radix-ui/themes";
+import { Table, Button, Text, Flex, Box } from "@radix-ui/themes";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getHuntInstancesByTemplate } from "../../services/serviceRoutes/huntInstanceServices";
 
 const HuntInstanceEntry = ({ results, setResults, byHuntId, huntId }) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     byHuntId && fetchInstanceData();
     async function fetchInstanceData() {
       try {
-        const response = await getHuntInstancesByTemplate(huntId)
-        console.log(response)
-        setResults(response.data)
+        const response = await getHuntInstancesByTemplate(huntId);
+        console.log(response);
+        setResults(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -20,41 +20,40 @@ const HuntInstanceEntry = ({ results, setResults, byHuntId, huntId }) => {
 
   return (
     <>
-      {
-        byHuntId
-        ? <Table.Row>
-        <Table.ColumnHeaderCell colSpan={2}>
-          <Flex justify="end">
-            <Button variant="surface" onClick={() => navigate(`/launch-hunt/${huntId}`)}>New Instance</Button>
-          </Flex>
-          <Flex justify="center">Hunt Instances</Flex>
-        </Table.ColumnHeaderCell>
-      </Table.Row>
-        : null
-      }
+      {byHuntId ? (
+        <Table.Row>
+          <Table.ColumnHeaderCell colSpan={2}>
+            <Flex justify="end">
+              <Button
+                variant="surface"
+                onClick={() => navigate(`/launch-hunt/${huntId}`)}
+              >
+                New Instance
+              </Button>
+            </Flex>
+            <Flex justify="center">Hunt Instances</Flex>
+          </Table.ColumnHeaderCell>
+        </Table.Row>
+      ) : null}
       {results.length > 0 ? (
         results.map((result, index) => {
           const dateObj = new Date(result.start_time);
           const startTime = dateObj.toLocaleString("en-US");
           return (
-            <Table.Row key={index}>
-              <Table.RowHeaderCell>
-                <NavLink
-                  to={`/hunt-details/${result.id}/${result.scavenger_hunt.id}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <Button
-                    variant="surface"
-                    style={{ textDecoration: "none", color: "inherit", whiteSpace: "normal",
-                    height: "50px",
-                    width: "130px",}}
-                  >
-                    {result.scavenger_hunt.name}
-                  </Button>
-                </NavLink>
-              </Table.RowHeaderCell>
-              <Table.Cell>{startTime}</Table.Cell>
-            </Table.Row>
+            <NavLink
+              to={`/hunt-details/${result.id}/${result.scavenger_hunt.id}`}
+              style={{ textDecoration: "none", color: "inherit"}}
+              key={index}
+            >
+              <Flex width="100%" className="button-row" height="40px">
+                <Flex width="50%" p="10px" justify="center">
+                  <Text>{result.scavenger_hunt.name}</Text>
+                </Flex>
+                <Flex width="50%" p="10px" justify="center">
+                  <Text wrap="nowrap">{startTime}</Text>
+                </Flex>
+              </Flex>
+            </NavLink>
           );
         })
       ) : (

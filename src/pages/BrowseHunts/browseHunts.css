@@ -12,3 +12,19 @@
 .search-container {
   gap: 10px;
 }
+
+.button-row {
+  box-shadow: 
+  inset 0 10px 30px rgba(255, 255, 255, 0.25), /* Top highlight */
+  inset 0 -10px 30px rgba(0, 0, 0, 0.2);      /* Bottom shadow */
+}
+
+.button-row:hover {
+  cursor: pointer;
+}
+
+.button-row:active {
+  box-shadow: 
+  inset 0 10px 30px rgba(0, 0, 0, 0.2), /* Top SHADOW */
+  inset 0 -10px 30px rgba(255, 255, 255, 0.25);      /* Bottom HIGHLIGHT */
+}
