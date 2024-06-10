@@ -1,0 +1,18 @@
+
+.template-row {
+    box-shadow: 
+    inset 0 10px 30px rgba(255, 255, 255, 0.25), /* Top highlight */
+    inset 0 -10px 30px rgba(0, 0, 0, 0.8);      /* Bottom shadow */
+}
+
+.template-row:hover {
+    box-shadow: 
+    inset 0 10px 30px rgba(255, 255, 255, 0.8), /* Top highlight */
+    inset 0 -10px 30px rgba(0, 0, 0, 0.8);      /* Bottom shadow */
+}
+
+.template-row:active {
+    box-shadow: 
+    inset 0 10px 30px rgba(0, 0, 0, 0.8),         /* Top SHADOW */
+    inset 0 -10px 30px rgba(255, 255, 255, 0.25);   /* Bottom HIGHLIGHT */
+}

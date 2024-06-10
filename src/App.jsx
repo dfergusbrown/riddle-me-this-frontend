@@ -16,7 +16,6 @@ function App() {
   return (
     <div className="main-container">
       <Navbar />
-      <div className="body-container">
         <Routes>
           <Route path="/" element={<LandingPage />}/>
           <Route path="/browse" element={<BrowseHunts />} />
@@ -27,7 +26,6 @@ function App() {
           <Route path="/launch-hunt/:huntTemplateId" element={<ProtectedRoutes><LaunchHunt /></ProtectedRoutes>} />
           <Route path="/profile" element={<ProtectedRoutes><MyProfile /></ProtectedRoutes>} />
         </Routes>
-      </div>
     </div>
   );
 }

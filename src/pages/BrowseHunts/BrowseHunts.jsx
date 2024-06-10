@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, Flex, Text, Box, Table, TextField } from "@radix-ui/themes";
+import { Button, Flex, Text, Box, Table, TextField, ScrollArea } from "@radix-ui/themes";
 import { getAllHuntInstances } from "../../services/serviceRoutes/huntInstanceServices";
 import "./browseHunts.css";
 import HuntInstanceEntry from "../../components/HuntInstanceEntry/HuntInstanceEntry";
@@ -44,16 +44,16 @@ const BrowseHunts = () => {
       direction="column"
       gap="20px"
       align="center"
-      m="4"
-      style={{ marginTop: "40px" }}
+      height="100%"
+      width="100%"
+      m="0"
+      p="80px 20px 40px"
     >
       <Text
         as="h1"
         size="6"
         weight="bold"
-        color="indigo"
         variant="soft"
-        highContrast
       >
         Browse Hunts
       </Text>
@@ -73,40 +73,36 @@ const BrowseHunts = () => {
             flex: "1",
             border: "1px solid #ccc",
             borderRadius: "4px",
+            height: "2.5em"
           }}
         >
         <TextField.Slot />
         </TextField.Root>
         <Button
           onClick={handleSearch}
-          color="indigo"
           variant="soft"
           size="medium"
         >
           Search
         </Button>
       </Flex>
-      <Box width="100%" mt="20px">
-        <Table.Root>
-          <Table.Header>
-            <Table.Row>
-              <Table.ColumnHeaderCell className="table-header-hunts">
-                Hunts
-              </Table.ColumnHeaderCell>
-              <Table.ColumnHeaderCell className="table-header-date">
-                Date
-              </Table.ColumnHeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            <HuntInstanceEntry
-              results={results}
-              byHuntId={false}
-              setResults={setResults}
-            />
-          </Table.Body>
-        </Table.Root>
-      </Box>
+        <Flex width="100%" className="row">
+          <Flex width="50%" justify="center">
+            <Text align="center">Hunts</Text>
+          </Flex>
+          <Flex width="50%" justify="center">
+            <Text align="center">Date</Text>
+          </Flex>
+        </Flex>
+      <ScrollArea type="always" scrollbars="vertical" style={{width: "100%", flexGrow: 1}}>
+        <Flex direction="column">
+          <HuntInstanceEntry
+                results={results}
+                byHuntId={false}
+                setResults={setResults}
+          />
+        </Flex>
+      </ScrollArea>
     </Flex>
   );
 };

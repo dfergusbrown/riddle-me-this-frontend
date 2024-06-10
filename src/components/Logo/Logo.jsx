@@ -1,12 +1,17 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import './logo.css';
+import React from "react";
+import "./logo.css";
 
-const Logo = () => {
+const Logo = ({ newClassName }) => {
   return (
-    <NavLink to="/">
-      <img src="/mag-logo.jpg" alt="Logo" className="logo" />
-    </NavLink>
+    <img
+      src="/extracted-logo.png"
+      alt="Logo"
+      className={newClassName}
+      // style={{
+      //   filter:
+      //     "invert() invert(82%) sepia(27%) saturate(800%) hue-rotate(350deg) brightness(105%) contrast(88%);",
+      // }}
+    />
   );
 };
 

@@ -1,71 +1,74 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { Button, Flex, Text } from "@radix-ui/themes";
 import { useNavigate } from "react-router";
 import { getHuntTemplatesByUser } from "../../services/serviceRoutes/huntTemplateServices";
 import Loading from "../../components/Loading/Loading";
 import HuntTemplateEntry from "../../components/HuntTemplateEntry/HuntTemplateEntry";
 
-
 const CreatorControlPanel = () => {
-  const [huntTemplates, setHuntTemplates] = useState([])
-  const [loading, setLoading] = useState(true)
-  const navigate = useNavigate()
+  const [huntTemplates, setHuntTemplates] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/create-hunt')
-  }
+    navigate("/create-hunt");
+  };
 
   useEffect(() => {
     const fetchHuntTemplates = async () => {
       try {
-        const response = await getHuntTemplatesByUser()
+        const response = await getHuntTemplatesByUser();
         if (response.status == 200) {
           // console.log(response)
-          setHuntTemplates(response.data)
-          setLoading(false)
+          setHuntTemplates(response.data);
+          setLoading(false);
         }
       } catch (error) {
-        console.error(error)
-        setLoading(false)
+        console.error(error);
+        setLoading(false);
       }
-    }
-    fetchHuntTemplates()
-  }, [])
+    };
+    fetchHuntTemplates();
+  }, []);
 
   if (loading) {
-    return <Loading />
+    return <Loading />;
   }
 
   return (
     <>
-      <Flex align='center' justify='center' wrap='wrap' style={{marginTop: '20px'}} direction='column'>
-        <Text
-          as="h1"
-          size="6"
-          weight="bold"
-          color="indigo"
-          variant="soft"
-          highContrast
-        >
-          Creator Control Panel
-        </Text>
-        <Button 
-          onClick={handleClick} 
-          variant="surface" 
-          onMouseOver={(e) => {
-            e.currentTarget.style.backgroundColor = '#475569';
-          }}
-          onMouseOut={(e) => {
-            e.currentTarget.style.backgroundColor = '#1E293B';
-          }}
-          style={{ marginTop: '20px' }}
-        >
-          Create New Hunt
-        </Button>
+      <Flex
+        width="100%"
+        align="center"
+        justify="center"
+        direction="column"
+        overflow="hidden"
+        p="80px 0px 20px"
+      >
+        <Flex direction="column" width="100%">
+          <Flex width="100%" justify="center">
+            <Text as="h1" size="6" weight="bold" variant="soft" highContrast>
+              Creator Control Panel
+            </Text>
+          </Flex>
+          <Button
+            onClick={handleClick}
+            variant="surface"
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = "#475569";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = "#1E293B";
+            }}
+            m="20px"
+          >
+            Create New Hunt
+          </Button>
+        </Flex>
         <HuntTemplateEntry hunts={huntTemplates} />
       </Flex>
     </>
   );
 };
 
-export default CreatorControlPanel
+export default CreatorControlPanel;
