@@ -36,38 +36,36 @@ const CreatorControlPanel = () => {
   }
 
   return (
-    <>
-      <Flex
-        width="100%"
-        align="center"
-        justify="center"
-        direction="column"
-        overflow="hidden"
-        p="80px 0px 20px"
-      >
-        <Flex direction="column" width="100%">
-          <Flex width="100%" justify="center">
-            <Text as="h1" size="6" weight="bold" variant="soft" highContrast>
-              Creator Control Panel
-            </Text>
-          </Flex>
-          <Button
-            onClick={handleClick}
-            variant="surface"
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = "#475569";
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = "#1E293B";
-            }}
-            m="20px"
-          >
-            Create New Hunt
-          </Button>
+    <Flex
+      width="100%"
+      align="center"
+      justify="center"
+      direction="column"
+      overflow="hidden"
+      p="80px 0px 20px"
+    >
+      <Flex direction="column" width="100%">
+        <Flex width="100%" justify="center">
+          <Text as="h1" size="6" weight="bold" variant="soft" highContrast>
+            Creator Control Panel
+          </Text>
         </Flex>
-        <HuntTemplateEntry hunts={huntTemplates} />
+        <Button
+          onClick={handleClick}
+          variant="surface"
+          onMouseOver={(e) => {
+            e.currentTarget.style.backgroundColor = "#475569";
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.backgroundColor = "#1E293B";
+          }}
+          m="20px"
+        >
+          Create New Hunt
+        </Button>
       </Flex>
-    </>
+      <HuntTemplateEntry hunts={huntTemplates} />
+    </Flex>
   );
 };
 

@@ -1,10 +1,14 @@
 import { Avatar, Flex, Separator, Tabs, Text } from "@radix-ui/themes";
 import { useEffect, useRef, useState } from "react";
-import { getProfile, updateProfile } from "../../services/serviceRoutes/userServices";
+import {
+  getProfile,
+  updateProfile,
+} from "../../services/serviceRoutes/userServices";
 import ProfileInstancesList from "../../components/ProfileInstancesList/ProfileInstancesList";
 import { Pencil2Icon } from "@radix-ui/react-icons";
 import Loading from "../../components/Loading/Loading";
 import uploadProfileImage from "../../utils/firebaseUpload";
+import "./myProfile.css"
 
 const MyProfile = () => {
   const [pastHunts, setPastHunts] = useState(null);
@@ -72,21 +76,39 @@ const MyProfile = () => {
   }
 
   return (
-    <Flex direction="column" className="" align="center">
+    <Flex
+      width="100%"
+      align="center"
+      justify="center"
+      direction="column"
+      overflow="hidden"
+      p="80px 0px 20px"
+    >
       <div style={{ position: "relative" }}>
-        <Avatar src={userData?.profile_pic} fallback={userData?.user.username.charAt() || "U"} size="8" radius="full" m="6" />
+        <Avatar
+          src={userData?.profile_pic}
+          fallback={userData?.user.username.charAt() || "U"}
+          size="8"
+          radius="full"
+          m="6"
+        />
         <Pencil2Icon
           onClick={handleIconClick}
           style={{
             position: "absolute",
-            bottom: 40,
-            right: 40,
+            bottom: 25,
+            right: 20,
             height: "20px",
             width: "20px",
             padding: "10px",
           }}
         />
-        <input type="file" ref={fileInputRef} onChange={handleFileChange} style={{ display: "none" }} />
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          style={{ display: "none" }}
+        />
       </div>
       <Text size="6">{userData?.user.username || "Username"}</Text>
       <Separator orientation="horizontal" m="7" style={{ width: "80%" }} />
