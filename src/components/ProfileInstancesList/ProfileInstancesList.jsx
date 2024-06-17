@@ -16,8 +16,11 @@ const ProfileInstancesList = ({ participations }) => {
           Date
         </Flex>
       </Flex>
-      <Flex direction="column" style={{}}>
-        {/* <ScrollArea> */}
+      <Flex direction="column" flexGrow={1} style={{overflow: "scroll"}}>
+        {/* <ScrollArea 
+          scrollbars="vertical"
+          style={{maxWidth: "100%", height: "100%"}}
+          > */}
           {!participations.length ? (
             <Flex width="100%" justify="center">
               <Text>No records to Show</Text>

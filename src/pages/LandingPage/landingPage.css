@@ -8,6 +8,23 @@
 }
 
 .landing-logo {
-    height: 22em;
+    height: 20em;
     filter: invert() invert(82%) sepia(27%) saturate(800%) hue-rotate(350deg) brightness(115%) contrast(88%);
+}
+
+.logo-text {
+    font-family: Monteserrat;
+    font-weight: 600;
+}
+
+.tutorial-link {
+    position: absolute;
+    bottom: 5%;
+    left: 10%;
+}
+
+@font-face {
+    font-family: Monteserrat;
+    src:
+        url("../../assets/fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
 }
